@@ -23,7 +23,7 @@ let options = {
     '.git',
     'src'
   ],
-  forceUpload: false // Force uploading all files, Default to false(upload only newer files).
+  forceUpload: true // Force uploading all files, Default to false(upload only newer files).
 };
 
 deploy(config, options)
