@@ -9,16 +9,20 @@ let config = {
   port: core.getInput('port'), // Optional, Default to 22.
   username: core.getInput('username'), // Required.
   password: core.getInput('password'), // Optional.
-  //  privateKey: '/path/to/key.pem', // Optional.
-  //  passphrase: 'passphrase',       // Optional.
-  //  agent: '/path/to/agent.sock',   // Optional, path to the ssh-agent socket.
   localDir: core.getInput('localDir'), // Required, Absolute or relative to cwd.
   remoteDir: core.getInput('remoteDir') // Required, Absolute path only.
 };
 
 let options = {
   dryRun: JSON.parse(core.getInput('dryRun')), // Enable dry-run mode. Default to false
-  excludeMode: 'remove', // Behavior for excluded files ('remove' or 'ignore'), Default to 'remove'.
+  excludeMode: core.getInput('excludeMode'), // Behavior for excluded files ('remove' or 'ignore'), Default to 'remove'.
+  exclude: [                      // exclude patterns (glob)
+    'node_modules',
+    '.env.*',
+    '.git',
+    '.git/**/*',
+    'src/**/*'
+  ],
   forceUpload: false // Force uploading all files, Default to false(upload only newer files).
 };
 
