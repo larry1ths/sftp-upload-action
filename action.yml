@@ -17,9 +17,12 @@ inputs:
     required: true
   remoteDir:
     required: true
+  excludeMode:
+    required: false
+    default: 'ignore'
   dryRun:
     required: false
     default: false
 runs:
-  using: 'node12'
+  using: 'node10'
   main: 'dist/index.js'
